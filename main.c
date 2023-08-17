@@ -37,20 +37,13 @@ void* philosopher_thread(void* arg) {
     return NULL;
 }
 
-int main(int argc, char *argv[]) {
-    pthread_mutex_t forks[NUM_PHILOSOPHERS];
+int main(int argc, char* argv[]) 
+{
+    pthread_mutex_t *forks = createfork(NUM_PHILOSOPHERS);
     t_philo philosophers[NUM_PHILOSOPHERS];
     pthread_t philosopher_threads[NUM_PHILOSOPHERS];
 
     int i = 0;
-
-    // Initialize forks using while loop
-    while (i < NUM_PHILOSOPHERS) {
-        pthread_mutex_init(&forks[i], NULL);
-        i++;
-    }
-
-    i = 0;
 
     // Initialize philosophers using while loop
     while (i < NUM_PHILOSOPHERS) {
@@ -58,7 +51,6 @@ int main(int argc, char *argv[]) {
         philosophers[i].leftfork = &forks[i];
         philosophers[i].rightfork = &forks[(i + 1) % NUM_PHILOSOPHERS];
         pthread_create(&philosopher_threads[i], NULL, philosopher_thread, &philosophers[i]);
-        usleep(10);
         i++;
     }
 
@@ -74,6 +66,9 @@ int main(int argc, char *argv[]) {
         pthread_mutex_destroy(&forks[i]);
         i++;
     }
+    
+    // Free memory
+    free(forks);
 
     return 0;
 }
