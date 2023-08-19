@@ -3,6 +3,9 @@
 
 # include <unistd.h>
 # include <pthread.h>
+# include <stdlib.h>
+
+# include <stdio.h>
 
 typedef struct s_philo
 {
@@ -10,5 +13,11 @@ typedef struct s_philo
     pthread_mutex_t *leftfork;
     pthread_mutex_t *rightfork;
 }t_philo;
+
+void* philosopher_thread(void* arg);
+
+pthread_mutex_t *createfork(int fork_number);
+pthread_t *createthread(int thread_number, t_philo *philosophers);
+t_philo *createphilo(int philo_number, pthread_mutex_t* forks);
 
 #endif 

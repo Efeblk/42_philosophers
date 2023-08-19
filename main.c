@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <pthread.h>
-#include <unistd.h>
-
 #include "philosophers.h"
 
 #define NUM_PHILOSOPHERS 5
@@ -39,20 +34,16 @@ void* philosopher_thread(void* arg) {
 
 int main(int argc, char* argv[]) 
 {
-    pthread_mutex_t *forks = createfork(NUM_PHILOSOPHERS);
-    t_philo philosophers[NUM_PHILOSOPHERS];
-    pthread_t philosopher_threads[NUM_PHILOSOPHERS];
+    int philo_number;
+    int i;
+    pthread_mutex_t *forks; 
+    t_philo *philosophers;
+    pthread_t *philosopher_threads;
 
-    int i = 0;
-
-    // Initialize philosophers using while loop
-    while (i < NUM_PHILOSOPHERS) {
-        philosophers[i].philo_index = i;
-        philosophers[i].leftfork = &forks[i];
-        philosophers[i].rightfork = &forks[(i + 1) % NUM_PHILOSOPHERS];
-        pthread_create(&philosopher_threads[i], NULL, philosopher_thread, &philosophers[i]);
-        i++;
-    }
+    philo_number = atoi(argv[1]);
+    forks = createfork(philo_number);
+    philosophers = createphilo(philo_number, forks);
+    philosopher_threads = createthread(philo_number, philosophers);
 
     // Allow philosophers to run indefinitely (not practical in a real scenario)
     while (1) {
