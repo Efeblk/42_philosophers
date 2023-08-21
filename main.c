@@ -40,6 +40,8 @@ int main(int argc, char* argv[])
     t_philo *philosophers;
     pthread_t *philosopher_threads;
 
+    if (argcheck(argv))
+        return(1);
     philo_number = atoi(argv[1]);
     forks = createfork(philo_number);
     philosophers = createphilo(philo_number, forks);
@@ -63,3 +65,4 @@ int main(int argc, char* argv[])
 
     return 0;
 }
+
