@@ -1,44 +1,31 @@
 #include "philosophers.h"
 
-void* philosopher_thread(void* arg) {
+void* philosopher_thread(void* arg) 
+{
     t_philo* philosopher = (t_philo*)arg;
 
     while (1) {
         long start_time = get_current_time_ms();
-
         pthread_mutex_lock(philosopher->leftfork);
         printf("Philosopher %d has taken left fork\n", philosopher->philo_index);
-
         pthread_mutex_lock(philosopher->rightfork);
         printf("Philosopher %d has taken right fork\n", philosopher->philo_index);
-
-        // Calculate the elapsed time in milliseconds
         long end_time = get_current_time_ms();
         long elapsed_time = end_time - start_time;
-
-        // Calculate the remaining time for eating and thinking
         long remaining_time = philosopher->death_time - elapsed_time;
-
-        if (remaining_time <= 0) {
-            // Stop the philosopher thread if there's no remaining time
-            //printf("Philosopher %d ran out of time and died\n", philosopher->philo_index);
+        if (remaining_time <= 0) 
+        {
             philosopher->is_dead = 1;
             pthread_mutex_unlock(philosopher->leftfork);
             pthread_mutex_unlock(philosopher->rightfork);
             return NULL; // Exit the thread
         }
-
-        // Simulate eating
         printf("Philosopher %d is eating\n", philosopher->philo_index);
         usleep(philosopher->eating_time * 1000);
-
-        // Release the forks
         pthread_mutex_unlock(philosopher->leftfork);
         printf("Philosopher %d released left fork\n", philosopher->philo_index);
         pthread_mutex_unlock(philosopher->rightfork);
         printf("Philosopher %d released right fork\n", philosopher->philo_index);
-
-        // Simulate thinking with the remaining time
         printf("Philosopher %d is thinking\n", philosopher->philo_index);
         usleep(remaining_time * 1000);
     }
