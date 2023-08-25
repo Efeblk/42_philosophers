@@ -12,7 +12,7 @@ typedef struct s_rules
     int philo_number;
     int death_time;
     int eating_time;
-    int thinking_time;
+    //int thinking_time;
     int nbreat;
 }t_rules;
 typedef struct s_philo
@@ -22,7 +22,7 @@ typedef struct s_philo
     pthread_mutex_t *rightfork;
     int death_time;
     int eating_time;
-    int thinking_time;
+    //int thinking_time;
     int is_dead;
 }t_philo;
 

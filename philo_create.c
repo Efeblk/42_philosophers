@@ -45,7 +45,7 @@ t_philo *createphilo(int philo_number, pthread_mutex_t* forks, t_rules *rules)
         philosophers[i].rightfork = &forks[(i + 1) % philo_number];
         philosophers[i].death_time = rules->death_time;
         philosophers[i].eating_time = rules->eating_time;
-        philosophers[i].thinking_time = rules->thinking_time;
+        //philosophers[i].thinking_time = rules->thinking_time;
         philosophers[i].is_dead = 0;
         i++;
     }
@@ -58,7 +58,7 @@ t_rules *createrules(t_rules* rules, char *argv[])
     rules->philo_number = ft_atoi(argv[1]);
     rules->death_time = ft_atoi(argv[2]);
     rules->eating_time = ft_atoi(argv[3]);
-    rules->thinking_time = ft_atoi(argv[4]);
+    //rules->thinking_time = ft_atoi(argv[4]);
     if (argv[5])
         rules->nbreat = ft_atoi(argv[5]);
     else
