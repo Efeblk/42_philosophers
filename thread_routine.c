@@ -9,6 +9,7 @@ static int check_dying(long remaining_time, t_philo *philosopher)
         pthread_mutex_unlock(philosopher->rightfork);
         return 1;
     }
+    return 0;
 }
 
 static void fork_lock(t_philo *philosopher)
@@ -17,6 +18,14 @@ static void fork_lock(t_philo *philosopher)
     printf("Philosopher %d has taken left fork\n", philosopher->philo_index);
     pthread_mutex_lock(philosopher->rightfork);
     printf("Philosopher %d has taken right fork\n", philosopher->philo_index);
+}
+
+static void fork_unlock(t_philo *philosopher)
+{
+    pthread_mutex_unlock(philosopher->rightfork);
+    printf("Philosopher %d released left fork\n", philosopher->philo_index);
+    pthread_mutex_unlock(philosopher->leftfork);
+    printf("Philosopher %d released right fork\n", philosopher->philo_index);
 }
 
 void* philosopher_thread(void* arg) 
@@ -35,10 +44,7 @@ void* philosopher_thread(void* arg)
 
         printf("Philosopher %d is eating\n", philosopher->philo_index);
         usleep(philosopher->eating_time * 1000);
-        pthread_mutex_unlock(philosopher->leftfork);
-        printf("Philosopher %d released left fork\n", philosopher->philo_index);
-        pthread_mutex_unlock(philosopher->rightfork);
-        printf("Philosopher %d released right fork\n", philosopher->philo_index);
+        fork_unlock(philosopher);
         printf("Philosopher %d is thinking\n", philosopher->philo_index);
         usleep(remaining_time * 1000);
     }
