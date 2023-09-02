@@ -27,10 +27,11 @@ int main(int argc, char* argv[])
         }
         if (philosophers[i].is_dead == 1)
         {
-            printf("philo %i is dead bro :( ", philosophers[i].philo_index);
+            printf("%i\n", philosophers[i].philo_index);
+            printf("philo %i is dead", philosophers[i].philo_index);
             return(1);
         }  
-        usleep(10); // Sleep for 1 second
+        usleep(10);
     }
     i = 0;
     while (i < rules->philo_number) 

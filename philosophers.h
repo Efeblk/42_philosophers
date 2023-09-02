@@ -9,10 +9,11 @@
 
 typedef struct s_rules
 {
+    long start_time;
     int philo_number;
     int death_time;
     int eating_time;
-    //int thinking_time;
+    int sleeping_time;
     int nbreat;
 }t_rules;
 typedef struct s_philo
@@ -20,10 +21,10 @@ typedef struct s_philo
     int philo_index;
     pthread_mutex_t *leftfork;
     pthread_mutex_t *rightfork;
-    int death_time;
-    int eating_time;
-    //int thinking_time;
+    int meal_count;
     int is_dead;
+    long last_eat_time;
+    t_rules *rules;
 }t_philo;
 
 void* philosopher_thread(void* arg);
@@ -38,4 +39,7 @@ long get_current_time_ms();
 int argcheck(char *argv[]);
 
 int ft_atoi(const char *str);
+
+void	ft_sleep(long time, t_philo *philosopher);
+
 #endif 

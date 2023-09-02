@@ -11,3 +11,16 @@ long time_diff(long start, long end)
 {
     return(end - start);
 }
+
+void	ft_sleep(long time, t_philo *philosopher)
+{
+	long    current_time;
+
+	current_time = get_current_time_ms();
+	while (1)
+	{
+		if ((get_current_time_ms() - current_time) >= time)
+			break ;
+		usleep(philosopher->rules->philo_number * 2);
+	}
+}
