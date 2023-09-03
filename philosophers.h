@@ -20,12 +20,11 @@
 # include <sys/time.h>
 # include <limits.h>
 
-# define FORK "%ld Philosopher %d has taken fork\n"
-# define DEAD "%ld Philosopher %i is dead\n"
-# define RL_FORK "%ld Philosopher %d released fork\n"
-# define EATING "%ld Philosopher %d is eating\n"
-# define SLEEPING "%ld Philosopher %d is sleeping\n"
-# define THINKING "%ld Philosopher %d is thinking\n"
+# define FORK "%ld %d has taken a fork\n"
+# define DEAD "%ld %d died\n"
+# define EATING "%ld %d is eating\n"
+# define SLEEPING "%ld %d is sleeping\n"
+# define THINKING "%ld %d is thinking\n"
 
 typedef struct s_rules
 {

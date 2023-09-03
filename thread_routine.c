@@ -25,13 +25,8 @@ void	fork_lock(t_philo *philosopher)
 
 void	fork_unlock(t_philo *philosopher)
 {
-	long	time;
-
-	time = get_current_time_ms() - philosopher->rules->start_time;
 	pthread_mutex_unlock(philosopher->rightfork);
-	printf(RL_FORK, time, philosopher->philo_index);
 	pthread_mutex_unlock(philosopher->leftfork);
-	printf(RL_FORK, time, philosopher->philo_index);
 }
 
 void	philo_eat(t_philo *philosopher)
