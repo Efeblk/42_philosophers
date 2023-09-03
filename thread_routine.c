@@ -48,7 +48,7 @@ void	*philosopher_thread(void *arg)
 	t_philo		*philo;
 	long		time;
 
-	philo = (t_philo*)arg;
+	philo = (t_philo *)arg;
 	if (philo->philo_index % 2 != 0 && philo->rules->philo_number > 1)
 		usleep(philo->rules->eating_time * 1000);
 	while (1)

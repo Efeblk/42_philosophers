@@ -53,7 +53,7 @@ void	detach_threads(t_rules *r, pthread_t *t, pthread_mutex_t *f)
 	}
 }
 
-void	freeer(t_rules *r, t_philo *p, pthread_mutex_t *f, pthread_t *t)
+void	fre(t_rules *r, t_philo *p, pthread_mutex_t *f, pthread_t *t)
 {
 	free(r);
 	free(p);

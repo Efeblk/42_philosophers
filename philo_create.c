@@ -34,7 +34,7 @@ pthread_t	*createthread(int thread_number, t_philo *philosophers)
 	return (threads);
 }
 
-t_philo	*createphilo(int philo_number, pthread_mutex_t *forks, t_rules *rules)
+t_philo	*createphilo(int philo_number, pthread_mutex_t *f, t_rules *r)
 {
 	t_philo	*philosophers;
 	int		i;
@@ -44,10 +44,10 @@ t_philo	*createphilo(int philo_number, pthread_mutex_t *forks, t_rules *rules)
 	while (i < philo_number)
 	{
 		philosophers[i].philo_index = i + 1;
-		philosophers[i].leftfork = &forks[i];
-		philosophers[i].rightfork = &forks[(i + 1) % philo_number];
+		philosophers[i].leftfork = &f[i];
+		philosophers[i].rightfork = &f[(i + 1) % philo_number];
 		philosophers[i].meal = 0;
-		philosophers[i].rules = rules;
+		philosophers[i].rules = r;
 		philosophers[i].is_dead = 0;
 		philosophers[i].last_eat_time = get_current_time_ms();
 		i++;

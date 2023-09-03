@@ -17,11 +17,11 @@ int	main(int argc, char *argv[])
 	philosopher_threads = createthread(rules->philo_number, philosophers);
 	if (main_check(philosophers, rules))
 	{
-		freeer(rules, philosophers, forks, philosopher_threads);
+		fre(rules, philosophers, forks, philosopher_threads);
 		detach_threads(rules, philosopher_threads, forks);
 		return (1);
 	}
 	join_threads(rules, philosopher_threads, forks);
-	freeer(rules, philosophers, forks, philosopher_threads);
+	fre(rules, philosophers, forks, philosopher_threads);
 	return (0);
 }
