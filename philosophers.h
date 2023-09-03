@@ -18,8 +18,9 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <sys/time.h>
-# include <limits.h>
 
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 # define FORK "%ld %d has taken a fork\n"
 # define DEAD "%ld %d died\n"
 # define EATING "%ld %d is eating\n"
