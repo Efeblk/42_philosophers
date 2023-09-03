@@ -7,6 +7,12 @@
 # include <stdio.h>
 # include <sys/time.h>
 
+# define FORK "%ld Philosopher %d has taken fork\n"
+# define DEAD "%ld Philosopher %i is dead\n"
+# define RL_FORK "%ld Philosopher %d released fork\n"
+# define EATING "%ld Philosopher %d is eating\n"
+# define SLEEPING "%ld Philosopher %d is sleeping\n"
+# define THINKING "%ld Philosopher %d is thinking\n"
 typedef struct s_rules
 {
     long start_time;
@@ -15,14 +21,14 @@ typedef struct s_rules
     int eating_time;
     int sleeping_time;
     int nbreat;
-    int check_eat_count;
+    int b_eat;
 }t_rules;
 typedef struct s_philo
 {
     int philo_index;
     pthread_mutex_t *leftfork;
     pthread_mutex_t *rightfork;
-    int meal_count;
+    int meal;
     int is_dead;
     long last_eat_time;
     t_rules *rules;

@@ -19,11 +19,9 @@ int	main(int argc, char *argv[])
 	{
 		freeer(rules, philosophers, forks, philosopher_threads);
 		detach_threads(rules, philosopher_threads, forks);
-		//system("leaks philo");
 		return (1);
 	}
 	join_threads(rules, philosopher_threads, forks);
 	freeer(rules, philosophers, forks, philosopher_threads);
-	//system("leaks philo");
 	return (0);
 }

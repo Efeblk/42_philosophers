@@ -46,7 +46,7 @@ t_philo	*createphilo(int philo_number, pthread_mutex_t *forks, t_rules *rules)
 		philosophers[i].philo_index = i + 1;
 		philosophers[i].leftfork = &forks[i];
 		philosophers[i].rightfork = &forks[(i + 1) % philo_number];
-		philosophers[i].meal_count = 0;
+		philosophers[i].meal = 0;
 		philosophers[i].rules = rules;
 		philosophers[i].is_dead = 0;
 		philosophers[i].last_eat_time = get_current_time_ms();
@@ -65,12 +65,12 @@ t_rules	*createrules(t_rules *rules, char *argv[])
 	if (argv[5])
 	{
 		rules->nbreat = ft_atoi(argv[5]);
-		rules->check_eat_count = 1;
+		rules->b_eat = 1;
 	}
 	else
 	{
 		rules->nbreat = 0;
-		rules->check_eat_count = 0;
+		rules->b_eat = 0;
 	}
 	return (rules);
 }
