@@ -23,6 +23,7 @@ int	main(int argc, char *argv[])
 		return (1);
 	if (argcheck(argv))
 		return (1);
+	rules = NULL;
 	rules = createrules(rules, argv);
 	forks = createfork(rules->philo_number);
 	philosophers = createphilo(rules->philo_number, forks, rules);

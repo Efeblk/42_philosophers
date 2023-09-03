@@ -14,10 +14,8 @@
 
 int	main_check(t_philo *philosophers, t_rules *rules)
 {
-	int		total_meals_eaten;
 	long	time;
 	int		i;
-	int		j;
 
 	while (1)
 	{
