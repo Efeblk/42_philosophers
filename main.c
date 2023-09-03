@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ibalik <ibalik@student.42istanbul.com.t    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/03 21:50:18 by ibalik            #+#    #+#             */
+/*   Updated: 2023/09/03 21:50:20 by ibalik           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philosophers.h"
 
 int	main(int argc, char *argv[])
@@ -17,8 +29,8 @@ int	main(int argc, char *argv[])
 	philosopher_threads = createthread(rules->philo_number, philosophers);
 	if (main_check(philosophers, rules))
 	{
-		fre(rules, philosophers, forks, philosopher_threads);
 		detach_threads(rules, philosopher_threads, forks);
+		fre(rules, philosophers, forks, philosopher_threads);
 		return (1);
 	}
 	join_threads(rules, philosopher_threads, forks);
