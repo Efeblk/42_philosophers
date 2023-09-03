@@ -15,6 +15,7 @@ typedef struct s_rules
     int eating_time;
     int sleeping_time;
     int nbreat;
+    int check_eat_count;
 }t_rules;
 typedef struct s_philo
 {

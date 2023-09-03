@@ -17,23 +17,47 @@ int main(int argc, char* argv[])
     philosophers = createphilo(rules->philo_number, forks, rules);
     philosopher_threads = createthread(rules->philo_number, philosophers);
 
-    while (1) {
+    int total_meals_eaten = 0; // Initialize total meals eaten to 0
+    long time;
+    while (1) 
+    {
         i = 0;
-        while (philosophers[i].is_dead == 0)
+        while (i < rules->philo_number)
         {
-           i++;
-           if (i == rules->philo_number)
-            break;
+            time = (get_current_time_ms() - philosophers[i].last_eat_time);
+            if (time >= philosophers[i].rules->death_time)
+                philosophers[i].is_dead = 1;
+    
+            if (philosophers[i].is_dead)
+            {
+                printf("Philosopher %i is dead\n", philosophers[i].philo_index);
+                return 1;
+            }
+
+            total_meals_eaten = 0; 
+
+            int j = 0;
+            while (j < rules->philo_number)
+            {
+                total_meals_eaten += philosophers[j].meal_count;
+                j++;
+            }
+
+            if (rules->check_eat_count && (total_meals_eaten >= rules->nbreat))
+                return 0; // Exit the program
+            i++;
         }
-        if (philosophers[i].is_dead == 1)
-        {
-            printf("%i\n", philosophers[i].philo_index);
-            printf("philo %i is dead", philosophers[i].philo_index);
-            return(1);
-        }  
+
         usleep(10);
     }
+
     i = 0;
+
+    // if (rules->philo_number == 1)
+    // {
+    //     pthread_detach(philosopher_threads[0]);
+    // }
+    
     while (i < rules->philo_number) 
     {
         pthread_join(philosopher_threads[i], NULL);
