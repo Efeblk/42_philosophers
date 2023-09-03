@@ -7,7 +7,8 @@ static int ft_isdigit(int c)
 
 static int isalldigit(char *arg)
 {
-    while (*arg) {
+    while (*arg) 
+    {
         if (!ft_isdigit(*arg))
             return 0;
         arg++;
@@ -25,18 +26,13 @@ static int number_of_philo(int philo_number)
 int argcheck(char *argv[])
 {
     argv++;
-    while (*argv) {
+    while (*argv)
+    {
         if (!isalldigit(*argv))
-            return 1;
-
+            return (1);
         if (number_of_philo(ft_atoi(*argv)))
-            return 1;
-
+            return (1);
         argv++;
     }
     return 0;
 }
-
-//number_of_philosophers time_to_die time_to_eat time_to_sleep
-//[number_of_times_each_philosopher_must_eat]
-

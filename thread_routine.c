@@ -2,7 +2,6 @@
 
 static int check_dying(long remaining_time, t_philo *philosopher)
 {
-    //printf("\n %ld \n \n", remaining_time);
     if (remaining_time <= 0) 
     {
         philosopher->is_dead = 1;
@@ -19,7 +18,6 @@ static void fork_lock(t_philo *philosopher)
     time = get_current_time_ms() - philosopher->rules->start_time;
     pthread_mutex_lock(philosopher->leftfork);
     printf("%ld Philosopher %d has taken left fork\n", time, philosopher->philo_index);
-    //philosopher->rightfork = NULL;
     pthread_mutex_lock(philosopher->rightfork);
     printf("%ld Philosopher %d has taken right fork\n", time, philosopher->philo_index);
 }
@@ -41,7 +39,6 @@ static void philo_eat (t_philo *philosopher)
 
     philosopher->last_eat_time = get_current_time_ms();
     ft_sleep(philosopher->rules->eating_time, philosopher);
-    //usleep(philosopher->rules->eating_time * 1000);
     if (philosopher->rules->nbreat > 0)
         philosopher->meal_count += 1;
 }

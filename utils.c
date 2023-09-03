@@ -7,11 +7,6 @@ long get_current_time_ms()
     return (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
 }
 
-long time_diff(long start, long end)
-{
-    return(end - start);
-}
-
 void	ft_sleep(long time, t_philo *philosopher)
 {
 	long    current_time;
