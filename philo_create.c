@@ -6,7 +6,7 @@
 /*   By: ibalik <ibalik@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 21:50:28 by ibalik            #+#    #+#             */
-/*   Updated: 2023/09/04 04:08:35 by ibalik           ###   ########.fr       */
+/*   Updated: 2023/09/04 05:42:13 by ibalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ pthread_t	*createthread(int thread_number, t_philo *philosophers)
 	while (i < thread_number)
 	{
 		pthread_create(&threads[i], NULL, philosopher_thread, &philosophers[i]);
-		usleep(1);
 		i++;
 	}
 	return (threads);

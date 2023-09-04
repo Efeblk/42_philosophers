@@ -6,7 +6,7 @@
 /*   By: ibalik <ibalik@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 21:50:34 by ibalik            #+#    #+#             */
-/*   Updated: 2023/09/04 04:11:44 by ibalik           ###   ########.fr       */
+/*   Updated: 2023/09/04 05:43:23 by ibalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	*philosopher_thread(void *arg)
 
 	philo = (t_philo *)arg;
 	if (philo->philo_index % 2 != 0 && philo->rules->philo_number > 1)
-		usleep(philo->rules->eating_time * 1000);
+		ft_sleep(philo->rules->eating_time, philo->rules);
 	while (1)
 	{
 		routine_helper(philo);
