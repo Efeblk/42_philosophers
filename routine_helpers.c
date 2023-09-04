@@ -6,7 +6,7 @@
 /*   By: ibalik <ibalik@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 04:08:57 by ibalik            #+#    #+#             */
-/*   Updated: 2023/09/04 04:11:24 by ibalik           ###   ########.fr       */
+/*   Updated: 2023/09/04 04:17:50 by ibalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	routine_helper(t_philo *philo)
 {
 	if (!check_dd(philo->rules))
-	{
 		fork_lock(philo);
+	if (!check_dd(philo->rules))
 		philo_eat(philo);
+	if (!check_dd(philo->rules))
 		fork_unlock(philo);
-	}
-}
+}	
 
 void	routine_sl_th(t_philo *philo)
 {
