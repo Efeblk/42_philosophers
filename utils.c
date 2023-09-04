@@ -6,23 +6,11 @@
 /*   By: ibalik <ibalik@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 21:50:37 by ibalik            #+#    #+#             */
-/*   Updated: 2023/09/03 21:50:38 by ibalik           ###   ########.fr       */
+/*   Updated: 2023/09/04 04:00:17 by ibalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
-
-int	check_dying(long remaining_time, t_philo *philosopher)
-{
-	if (remaining_time <= 0)
-	{
-		philosopher->is_dead = 1;
-		pthread_mutex_unlock(philosopher->leftfork);
-		pthread_mutex_unlock(philosopher->rightfork);
-		return (1);
-	}
-	return (0);
-}
 
 long	get_current_time_ms(void)
 {
@@ -32,7 +20,7 @@ long	get_current_time_ms(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-void	ft_sleep(long time, t_philo *philosopher)
+void	ft_sleep(long time, t_rules *rules)
 {
 	long	current_time;
 
@@ -41,6 +29,6 @@ void	ft_sleep(long time, t_philo *philosopher)
 	{
 		if ((get_current_time_ms() - current_time) >= time)
 			break ;
-		usleep(philosopher->rules->philo_number * 2);
+		usleep(rules->philo_number * 2);
 	}
 }

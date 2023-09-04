@@ -6,7 +6,7 @@
 /*   By: ibalik <ibalik@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 21:50:24 by ibalik            #+#    #+#             */
-/*   Updated: 2023/09/03 21:50:25 by ibalik           ###   ########.fr       */
+/*   Updated: 2023/09/04 04:08:09 by ibalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,26 @@ int	number_of_philo(int philo_number)
 
 int	argcheck(char *argv[])
 {
-	argv++;
-	while (*argv)
+	long	check;
+	int		i;
+
+	i = 1;
+	check = 0;
+	if (number_of_philo(ft_atoi(argv[i])))
+		return (1);
+	while (argv[i])
 	{
-		if (!isalldigit(*argv))
+		if (!isalldigit(argv[i]))
 			return (1);
-		if (number_of_philo(ft_atoi(*argv)))
+		i++;
+	}
+	i = 1;
+	while (argv[i])
+	{
+		check = ft_atoi(argv[i]);
+		if (check > INT_MAX)
 			return (1);
-		argv++;
+		i++;
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ibalik <ibalik@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 21:50:32 by ibalik            #+#    #+#             */
-/*   Updated: 2023/09/03 21:50:33 by ibalik           ###   ########.fr       */
+/*   Updated: 2023/09/04 04:12:08 by ibalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@
 
 typedef struct s_rules
 {
-	long	start_time;
-	int		philo_number;
-	int		death_time;
-	int		eating_time;
-	int		sleeping_time;
-	int		nbreat;
-	int		b_eat;
+	long			start_time;
+	int				philo_number;
+	int				death_time;
+	int				eating_time;
+	int				sleeping_time;
+	int				nbreat;
+	int				b_eat;
+	int				p_dead;
+	pthread_mutex_t	*death;
 }t_rules;
 
 typedef struct s_philo
@@ -44,7 +46,6 @@ typedef struct s_philo
 	pthread_mutex_t	*leftfork;
 	pthread_mutex_t	*rightfork;
 	int				meal;
-	int				is_dead;
 	long			last_eat_time;
 	t_rules			*rules;
 }t_philo;
@@ -66,10 +67,14 @@ int				argcheck(char *argv[]);
 
 int				ft_isspace(int c);
 int				ft_isdigit(int c);
-int				ft_atoi(const char *str);
+long			ft_atoi(const char *str);
 
 int				check_dying(long remaining_time, t_philo *philosopher);
-void			ft_sleep(long time, t_philo *philosopher);
+void			routine_sl_th(t_philo *philo);
+void			routine_helper(t_philo *philo);
+int				check_dd(t_rules *rules);
+
+void			ft_sleep(long time, t_rules *rules);
 long			get_current_time_ms(void);
 
 int				main_check(t_philo *philosophers, t_rules *rules);

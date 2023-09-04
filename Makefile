@@ -1,10 +1,10 @@
-SRCS			= argcheck.c ft_atoi.c main_helpers.c main.c philo_create.c thread_routine.c utils.c
+SRCS			= argcheck.c ft_atoi.c main_helpers.c main.c philo_create.c thread_routine.c utils.c routine_helpers.c
 OBJS			= $(SRCS:.c=.o)
 
 
 CC				= gcc
 RM				= rm -f
-CFLAGS			= -Wall -Wextra -Werror 
+CFLAGS			= -Wall -Wextra -Werror -g
 LIB_NAME			= philo.a
 NAME				= philo
 

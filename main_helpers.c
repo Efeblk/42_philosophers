@@ -6,7 +6,7 @@
 /*   By: ibalik <ibalik@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 21:50:21 by ibalik            #+#    #+#             */
-/*   Updated: 2023/09/03 21:52:03 by ibalik           ###   ########.fr       */
+/*   Updated: 2023/09/04 03:26:09 by ibalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main_check(t_philo *philosophers, t_rules *rules)
 			time = (get_current_time_ms() - philosophers[i].last_eat_time);
 			if (time >= philosophers[i].rules->death_time)
 			{
-				philosophers[i].is_dead = 1;
+				philosophers[i].rules->p_dead = 1;
 				printf(DEAD, time, philosophers[i].philo_index);
 				return (1);
 			}
@@ -33,7 +33,6 @@ int	main_check(t_philo *philosophers, t_rules *rules)
 				return (0);
 			i++;
 		}
-		usleep(10);
 	}
 }
 

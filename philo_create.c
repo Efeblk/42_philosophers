@@ -6,7 +6,7 @@
 /*   By: ibalik <ibalik@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 21:50:28 by ibalik            #+#    #+#             */
-/*   Updated: 2023/09/03 21:50:29 by ibalik           ###   ########.fr       */
+/*   Updated: 2023/09/04 04:08:35 by ibalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_philo	*createphilo(int philo_number, pthread_mutex_t *f, t_rules *r)
 		philosophers[i].rightfork = &f[(i + 1) % philo_number];
 		philosophers[i].meal = 0;
 		philosophers[i].rules = r;
-		philosophers[i].is_dead = 0;
 		philosophers[i].last_eat_time = get_current_time_ms();
 		i++;
 	}
@@ -70,6 +69,9 @@ t_philo	*createphilo(int philo_number, pthread_mutex_t *f, t_rules *r)
 t_rules	*createrules(t_rules *rules, char *argv[])
 {
 	rules = (t_rules *)malloc(sizeof(t_rules));
+	rules->death = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t));
+	pthread_mutex_init(rules->death, NULL);
+	rules->p_dead = 0;
 	rules->philo_number = ft_atoi(argv[1]);
 	rules->death_time = ft_atoi(argv[2]);
 	rules->eating_time = ft_atoi(argv[3]);
