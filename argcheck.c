@@ -6,7 +6,7 @@
 /*   By: ibalik <ibalik@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/03 21:50:24 by ibalik            #+#    #+#             */
-/*   Updated: 2023/09/04 04:08:09 by ibalik           ###   ########.fr       */
+/*   Updated: 2023/09/04 05:25:56 by ibalik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	argcheck(char *argv[])
 
 	i = 1;
 	check = 0;
+	if (argv[5] && *argv[5] == '0')
+		return (1);
 	if (number_of_philo(ft_atoi(argv[i])))
 		return (1);
 	while (argv[i])

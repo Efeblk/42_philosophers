@@ -5,23 +5,19 @@ OBJS			= $(SRCS:.c=.o)
 CC				= gcc
 RM				= rm -f
 CFLAGS			= -Wall -Wextra -Werror -g
-LIB_NAME			= philo.a
-NAME				= philo
+NAME			= philo
 
 all:			$(NAME) 
 
-$(NAME):		$(LIB_NAME)
-				$(CC) $(CFLAGS) -o $(NAME) $(LIB_NAME)
-
-$(LIB_NAME):		$(OBJS)
-				ar rcs $(LIB_NAME) $(OBJS)
+$(NAME):		$(OBJS)
+				$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 clean:
 				$(RM) $(OBJS) 
 
 fclean:			clean
-				$(RM) $(NAME) $(LIB_NAME)
-
+				$(RM) $(NAME)
+				
 re:				fclean $(NAME)
 
 
