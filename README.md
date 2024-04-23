@@ -25,7 +25,7 @@ Each *fork* acts as a shared resource between two neighboring *philosophers*. Ho
 ### spaghetti
 The spaghetti represents the process of eating. Each *philosopher* must acquire both *forks* (resources) to enter the critical section (eating) and consume the spaghetti
 
-![philosphers](https://upload.wikimedia.org/wikipedia/commons/7/7b/An_illustration_of_the_dining_philosophers_problem.png)
+![philo](https://github.com/Efeblk/philosophers/assets/108200358/0c60f5df-3108-4a64-8971-c8609487e9b8)
 
 ## Problems
 
