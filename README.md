@@ -8,6 +8,7 @@
    - Problems
      - Deadlock
      - Data race
+   - Mutex
    - Usage
 
 ## Explaining
