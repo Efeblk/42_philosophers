@@ -46,3 +46,18 @@ number_of_times_each_philosopher_must_eat (optional argument): If all
 philosophers have eaten at least number_of_times_each_philosopher_must_eat
 times, the simulation stops. If not specified, the simulation stops when a
 philosopher dies.
+
+## Problems
+
+### Deadlock
+
+deadlock occurs when each philosopher holds one fork and is waiting for the neighboring philosopher to release the other fork. Here's how deadlock can arise in the philosopher's problem:
+
+Each philosopher picks up the fork on their left.
+Each philosopher waits indefinitely for the fork on their right to become available.
+
+As a result, all philosophers are stuck in a state where they cannot proceed because they are each waiting for a resource held by another philosopher. This situation creates a deadlock, as no philosopher can continue eating, and they remain in a state of indefinite waiting.
+
+Deadlock in the philosopher's problem is a consequence of improper resource allocation and synchronization. If the philosophers are not managed properly to ensure that all required resources (forks) are available when needed, deadlock can occur, leading to a situation where none of the philosophers can progress further with their tasks.
+
+
