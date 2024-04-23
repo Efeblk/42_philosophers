@@ -1,10 +1,21 @@
 # PHILOSOPHERS
 
+1. Philosophers
+   - Explaining
+     - Philosopher
+     - Fork
+     - Spaghetti
+   - Problems
+     - Deadlock
+     - Data race
+   - Usage
+
+## Explaining
 a scenario where a finite number of philosophers sit at a round table with a bowl of spaghetti in front of each. They alternate between thinking and eating. However, to eat, a philosopher needs both the fork to their left and the fork to their right.
 
 The challenge arises in designing a solution that prevents deadlock (where no philosopher can proceed because they are all waiting for a fork held by another philosopher) and ensures that all philosophers can eventually eat without starving (i.e., waiting indefinitely to obtain both forks).
 
-### philosopher
+### philosopher 
 Each philosopher is a thread
 
 ### fork
