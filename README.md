@@ -42,6 +42,12 @@ As a result, all *philosophers* are stuck in a state where they cannot proceed b
 
 ![Deadlock](https://github.com/Efeblk/philosophers/assets/108200358/8e9377c5-b83b-44b1-97b3-bb988d3dc66a)
 
+### Data race
+
+a situation where two or more philosophers (threads or processes) attempt to access shared resources (forks) simultaneously, leading to incorrect behavior or a race condition.
+
+the state of the forks (whether they are available or not) can become inconsistent across threads. For example, if one philosopher checks the state of a fork and then proceeds to pick it up, another philosopher might also check the same fork's state before the first philosopher has actually picked it up, leading to incorrect assumptions and potential data races.
+
 ## Usage
 
 ```
