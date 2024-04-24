@@ -48,6 +48,8 @@ a situation where two or more philosophers (threads or processes) attempt to acc
 
 the state of the forks (whether they are available or not) can become inconsistent across threads. For example, if one philosopher checks the state of a fork and then proceeds to pick it up, another philosopher might also check the same fork's state before the first philosopher has actually picked it up, leading to incorrect assumptions and potential data races.
 
+![data race](https://github.com/Efeblk/philosophers/assets/108200358/c4a60ceb-c2ae-4703-8460-489028330a78)
+
 ## Usage
 
 ```
